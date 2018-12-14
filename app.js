@@ -37,6 +37,11 @@ app.post(
   new agent.http.DebugRuntimeToggle('requests', appmetrics).toggle
 );
 
+app.post(
+  '/debug/loop',
+  new agent.http.DebugRuntimeToggle('loop', appmetrics).toggle
+);
+
 // Connect to the db
 MongoClient.connect("mongodb://localhost:27017", function(err, client) {
   if(!err) {

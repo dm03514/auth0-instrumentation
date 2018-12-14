@@ -15,7 +15,7 @@
   "editable": true,
   "gnetId": null,
   "graphTooltip": 0,
-  "id": 5,
+  "id": 4,
   "links": [],
   "panels": [
     {
@@ -23,7 +23,7 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "InfluxDB",
+      "datasource": "Prom",
       "description": "the number of event loop ticks in the last interval.",
       "fill": 1,
       "gridPos": {
@@ -56,6 +56,8 @@
       "steppedLine": false,
       "targets": [
         {
+          "expr": "test_runtime_loop_ticks",
+          "format": "time_series",
           "groupBy": [
             {
               "params": [
@@ -70,6 +72,7 @@
               "type": "fill"
             }
           ],
+          "intervalFactor": 1,
           "measurement": "test_runtime_loop_ticks",
           "orderByTime": "ASC",
           "policy": "default",
@@ -138,7 +141,7 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "InfluxDB",
+      "datasource": "Prom",
       "description": "Summarising sample based information of the event loop latency",
       "fill": 1,
       "gridPos": {
@@ -171,6 +174,8 @@
       "steppedLine": false,
       "targets": [
         {
+          "expr": "test_runtime_loop_latency_avg_ms",
+          "format": "time_series",
           "groupBy": [
             {
               "params": [
@@ -185,6 +190,8 @@
               "type": "fill"
             }
           ],
+          "intervalFactor": 1,
+          "legendFormat": "{{ host }} - avg",
           "measurement": "test_runtime_loop_latency_avg_ms",
           "orderByTime": "ASC",
           "policy": "default",
@@ -207,6 +214,8 @@
           "tags": []
         },
         {
+          "expr": "test_runtime_loop_latency_min_ms",
+          "format": "time_series",
           "groupBy": [
             {
               "params": [
@@ -221,6 +230,8 @@
               "type": "fill"
             }
           ],
+          "intervalFactor": 1,
+          "legendFormat": "{{ host }} - min",
           "measurement": "test_runtime_loop_latency_max_ms",
           "orderByTime": "ASC",
           "policy": "default",
@@ -243,6 +254,8 @@
           "tags": []
         },
         {
+          "expr": "test_runtime_loop_latency_max_ms",
+          "format": "time_series",
           "groupBy": [
             {
               "params": [
@@ -257,6 +270,8 @@
               "type": "fill"
             }
           ],
+          "intervalFactor": 1,
+          "legendFormat": "{{ host }} - max",
           "measurement": "test_runtime_loop_latency_min_ms",
           "orderByTime": "ASC",
           "policy": "default",
@@ -325,7 +340,7 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "InfluxDB",
+      "datasource": "Prom",
       "description": "summarising event tick information(latency) in time interval",
       "fill": 1,
       "gridPos": {
@@ -358,6 +373,8 @@
       "steppedLine": false,
       "targets": [
         {
+          "expr": "test_runtime_loop_tick_latency_avg_ms",
+          "format": "time_series",
           "groupBy": [
             {
               "params": [
@@ -372,6 +389,8 @@
               "type": "fill"
             }
           ],
+          "intervalFactor": 1,
+          "legendFormat": "{{ host }} - avg",
           "measurement": "test_runtime_loop_tick_latency_avg_ms",
           "orderByTime": "ASC",
           "policy": "default",
@@ -394,6 +413,8 @@
           "tags": []
         },
         {
+          "expr": "test_runtime_loop_tick_latency_max_ms",
+          "format": "time_series",
           "groupBy": [
             {
               "params": [
@@ -408,6 +429,8 @@
               "type": "fill"
             }
           ],
+          "intervalFactor": 1,
+          "legendFormat": "{{ host }} - max",
           "measurement": "test_runtime_loop_tick_latency_max_ms",
           "orderByTime": "ASC",
           "policy": "default",
@@ -430,6 +453,8 @@
           "tags": []
         },
         {
+          "expr": "test_runtime_loop_tick_latency_min_ms",
+          "format": "time_series",
           "groupBy": [
             {
               "params": [
@@ -444,6 +469,8 @@
               "type": "fill"
             }
           ],
+          "intervalFactor": 1,
+          "legendFormat": "{{ host }} - min",
           "measurement": "test_runtime_loop_tick_latency_min_ms",
           "orderByTime": "ASC",
           "policy": "default",
@@ -512,7 +539,7 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "InfluxDB",
+      "datasource": "Prom",
       "description": "the percentage of 1 CPU used by the event loop thread",
       "fill": 1,
       "gridPos": {
@@ -545,6 +572,8 @@
       "steppedLine": false,
       "targets": [
         {
+          "expr": "test_runtime_loop_cpu_system",
+          "format": "time_series",
           "groupBy": [
             {
               "params": [
@@ -559,6 +588,7 @@
               "type": "fill"
             }
           ],
+          "intervalFactor": 1,
           "measurement": "test_runtime_loop_cpu_system",
           "orderByTime": "ASC",
           "policy": "default",
@@ -581,6 +611,8 @@
           "tags": []
         },
         {
+          "expr": "test_runtime_loop_cpu_user",
+          "format": "time_series",
           "groupBy": [
             {
               "params": [
@@ -595,6 +627,7 @@
               "type": "fill"
             }
           ],
+          "intervalFactor": 1,
           "measurement": "test_runtime_loop_cpu_user",
           "orderByTime": "ASC",
           "policy": "default",
@@ -663,7 +696,7 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "InfluxDB",
+      "datasource": "Prom",
       "description": "Emitted when a garbage collection (GC) cycle occurs in the underlying V8 runtime.\n\ntype (String) the type of GC cycle, either:\n'M': MarkSweepCompact, aka \"major\"\n'S': Scavenge, aka \"minor\"\n'I': IncrementalMarking, aka \"incremental\" (only exists on node 5.x and greater)\n'W': ProcessWeakCallbacks, aka \"weakcb\" (only exists on node 5.x and greater)",
       "fill": 1,
       "gridPos": {
@@ -696,6 +729,8 @@
       "steppedLine": false,
       "targets": [
         {
+          "expr": "test_runtime_gc_duration_ms",
+          "format": "time_series",
           "groupBy": [
             {
               "params": [
@@ -716,6 +751,8 @@
               "type": "fill"
             }
           ],
+          "intervalFactor": 1,
+          "legendFormat": "Type: {{ gc_type }} - {{ host }}",
           "measurement": "test_runtime_gc_duration_ms",
           "orderByTime": "ASC",
           "policy": "default",
@@ -819,5 +856,5 @@
   "timezone": "",
   "title": "Node.js Runtime",
   "uid": "--bjLEEiz",
-  "version": 2
+  "version": 1
 }
