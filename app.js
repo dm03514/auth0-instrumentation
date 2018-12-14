@@ -1,9 +1,13 @@
 const appmetrics = require('appmetrics');
 const agent = require('./index.js');
 
+if (process.env.INSTRUMENTATION_ATTACH_APPMETRICS_DASH) {
+  require('appmetrics-dash').attach();
+}
+
 appmetrics.configure({
   mqtt: 'off',
-  profiling: 'off'
+  profiling: 'off',
 });
 
 agent.init({name: 'test'}, process.env);
