@@ -51,7 +51,7 @@ describe('Utils', function() {
   describe('buildMetricPrefix', function() {
     it('should return empty string if omit prefix is specified', function() {
       assert('' === utils.buildMetricPrefix({
-        METRICS_OMIT_PREFIX: 1,
+        METRICS_PREFIX: '',
       }));
     });
     it('should return METRICS_PREFIX value if specified', function() {
